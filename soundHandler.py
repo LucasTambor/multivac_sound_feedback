@@ -47,7 +47,20 @@ class SoundHandle(object):
         else:
             self.Log.log("Invalid Status")
 
-    def handlePan(self, side):
+    def handlePan(self, angle):
+        # Receive angle
+        self.Log.log("Horizontal Angle: {}".format(angle))
+        side = "none"
+        if int(angle) >= -10 and int(angle) <= 10:
+            side = "center"
+        elif int(angle) > 10:
+            side = "right"
+        elif int(angle) < -10:
+            side = "left"
+        else:
+            self.Log.log("Invalid Angle: {}".format(angle))
+            return
+
         self.Log.log("PAN: {}".format(side))
         if side == "left":
             self.sound.setPan(self.sound.CHANNEL_LEFT)
@@ -58,7 +71,19 @@ class SoundHandle(object):
         else:
             self.Log.log("Invalid Pan")
 
-    def handleTone(self, side):
+    def handleTone(self, angle):
+        self.Log.log("Vertical Angle: {}".format(angle))
+        side = "none"
+        if int(angle) >= -10 and int(angle) <= 10:
+            side = "center"
+        elif int(angle) > 10:
+            side = "up"
+        elif int(angle) < -10:
+            side = "down"
+        else:
+            self.Log.log("Invalid Angle: {}".format(angle))
+            return
+
         self.Log.log("PAN: {}".format(side))
         if side == "up":
             self.sound.setTone(self.sound.TONE_UP)

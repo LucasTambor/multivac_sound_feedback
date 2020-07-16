@@ -9,8 +9,8 @@ class Sound(object):
     TONE_DOWN = 1
     TONE_CENTER = 2
 
-    MIN_INTERVAL = 0.4
-    MAX_INTERVAL = 1
+    MIN_INTERVAL = 0.5
+    MAX_INTERVAL = 2
     def __init__(self):
         pygame.mixer.init()
         self.sound = pygame.mixer.Sound('./sounds/beep_center.wav')
